@@ -7,4 +7,4 @@ data:
   branch: main
   host: github.com
   org: cloud-native-garage-method-cohort
-  repo: group-4-app-production
+  repo: group-4-prod
