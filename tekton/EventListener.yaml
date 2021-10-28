@@ -1,40 +1,40 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 spec:
-  serviceAccountName: webhook-receiver
+  serviceAccountName: webhook-receiver-frontend
   triggers:
     - template:
-        name: webhook-receiver
+        name: webhook-receiver-frontend
       bindings:
-        - ref: webhook-receiver
+        - ref: webhook-receiver-frontend
 ---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: group-4-app-
+        generateName: group-4-frontend-
       spec:
         params: 
           - name: app-name
-            value: group-4-app
+            value: group-4-frontend
           - name: source-repo
             value: https://github.com/cloud-native-garage-method-cohort/group4-app-frontend
           - name: image-repo
             value: quay.io/cayops/group-4-frontend
           - name: app-namespace
-            value: group-4-app-dev
+            value: group-4-dev
         pipelineRef:
-          name: group-4-app-pipeline
-        serviceAccountName: build-robot
+          name: group-4-frontend-pipeline
+        serviceAccountName: build-bot
         workspaces:
         - name: pipeline-shared-data
           volumeClaimTemplate:
@@ -59,13 +59,13 @@ spec:
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 rules:
   - resources:
@@ -93,31 +93,31 @@ rules:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 roleRef:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   kind: Role
   apiGroup: rbac.authorization.k8s.io
 subjects:
-  - name: webhook-receiver
+  - name: webhook-receiver-frontend
     kind: ServiceAccount
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: webhook-receiver
+  name: webhook-receiver-frontend
   namespace: group-4-dev
 spec:
   port:
     targetPort: 8080
   to:
-    name: el-webhook-receiver
+    name: el-webhook-receiver-frontend
     kind: Service
     weight: 100

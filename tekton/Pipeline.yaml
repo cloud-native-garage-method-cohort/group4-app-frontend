@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: group-4-app-pipeline
+  name: group-4-frontend-pipeline
   namespace: group-4-dev
 spec:
   params:
