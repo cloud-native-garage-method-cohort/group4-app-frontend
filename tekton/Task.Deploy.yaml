@@ -3,7 +3,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: deploy
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 spec:
   params:
     - name: app-namespace

@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 spec:
   serviceAccountName: webhook-receiver
   triggers:
@@ -15,7 +15,7 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
@@ -60,13 +60,13 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 rules:
   - resources:
       - eventlisteners
@@ -94,13 +94,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 roleRef:
   name: webhook-receiver
   kind: Role
@@ -113,7 +113,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: webhook-receiver
-  namespace: group-4-app-pipeline
+  namespace: group-4-dev
 spec:
   port:
     targetPort: 8080
