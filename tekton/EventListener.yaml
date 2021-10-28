@@ -34,7 +34,7 @@ spec:
             value: group-4-dev
         pipelineRef:
           name: group-4-frontend-pipeline
-        serviceAccountName: build-robot
+        serviceAccountName: build-bot
         workspaces:
         - name: pipeline-shared-data
           volumeClaimTemplate:
