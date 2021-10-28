@@ -1,4 +1,4 @@
-FROM quay.io/upslopeio/node-alpine
+FROM bitnami/node:latest
 
 WORKDIR /usr/src/app
 
