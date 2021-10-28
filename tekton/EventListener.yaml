@@ -21,19 +21,19 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: group-4-app-
+        generateName: group-4-frontend-
       spec:
         params: 
           - name: app-name
-            value: group-4-app
+            value: group-4-frontend
           - name: source-repo
             value: https://github.com/cloud-native-garage-method-cohort/group4-app-frontend
           - name: image-repo
             value: quay.io/cayops/group-4-frontend
           - name: app-namespace
-            value: group-4-app-dev
+            value: group-4-dev
         pipelineRef:
-          name: group-4-app-pipeline
+          name: group-4-frontend-pipeline
         serviceAccountName: build-robot
         workspaces:
         - name: pipeline-shared-data
