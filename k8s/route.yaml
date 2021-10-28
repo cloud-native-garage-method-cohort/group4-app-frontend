@@ -1,0 +1,8 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: group-4-app-route
+spec:
+  to:
+    kind: Service
+    name: group-4-app-service
