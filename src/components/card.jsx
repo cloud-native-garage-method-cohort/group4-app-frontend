@@ -27,7 +27,7 @@ class DogCard extends React.Component {
         try {
             const response = await fetch('https://dog-facts-backend-group-4-dev.itzroks-100000kr1k-fz0n6p-6ccd7f378ae819553d37d5f2ee142bd6-0000.ams03.containers.appdomain.cloud/fact', {mode:'cors'});
             const data = await response.json();
-            console.log("response: ", { data });
+            // console.log("response: ", { data });
 
             this.setState({
                 dogFact: data.fact,
@@ -36,7 +36,7 @@ class DogCard extends React.Component {
         catch (e) {
           console.log(e)
         }
-        console.log("dog fact: ", this.state.dogFact)
+        // console.log("dog fact: ", this.state.dogFact)
     }
 
     getRandom = () => {

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/header'
 import DogCard from './components/card'
+import NewFact from './components/newFact'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     {/* <App /> */}
     <Header />
     <DogCard />
+    <NewFact />
   </React.StrictMode>,
   document.getElementById('root')
 );
