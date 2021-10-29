@@ -12,5 +12,6 @@ USER 1000
 RUN npm install
 
 COPY --chown=node:node . /home/node/app
+RUN chmod 777 /home/node/app/node_modules
 EXPOSE 3000
 CMD ["npm", "start"]

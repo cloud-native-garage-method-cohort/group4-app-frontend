@@ -14,8 +14,10 @@ spec:
       labels:
         app: group-4-frontend
     spec:
+      securityContext:
+          runAsGroup: 1000
       containers:
       - name: react-app
-        image: quay.io/cayops/group-4-frontend:880b86ad44e753fed883c5d244d96b70cd0b6568
+        image: quay.io/cayops/group-4-frontend:2f5b6ae2f5f9e0f3a1408b1c4c809fd53d3e8a71
         ports:
         - containerPort: 3000
