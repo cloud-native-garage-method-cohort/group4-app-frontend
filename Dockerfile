@@ -1,30 +1,17 @@
-# First build stage
-FROM bitnami/node:12 as builder
-ENV NODE_ENV="production"
+FROM quay.io/upslopeio/node-alpine
 
-# Copy app's source code to the /app directory
-COPY . /app
+COPY --chown=node:node . .
+USER node
 
-# The application's directory will be the working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Install Node.js dependencies defined in '/app/packages.json'
-RUN npm install
+COPY . ./
 
-# Second build stage
-FROM bitnami/node:12-prod
-ENV NODE_ENV="production"
+# building the app
+RUN npm i
+RUN npm run build
 
-# Copy the application code
-COPY --from=builder /app /app
 
-# Create a non-root user
-RUN useradd -r -u 1001 -g root nonroot
-RUN chown -R nonroot /app
-USER nonroot
 
-WORKDIR /app
-EXPOSE 3000
-
-# Start the application
-CMD ["npm", "start"]
+# Running the app
+CMD [ "npm", "start" ]

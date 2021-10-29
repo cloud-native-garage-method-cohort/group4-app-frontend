@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: group-4-app
+  name: group-4-frontend
   labels:
-    app: group-4-app
+    app: group-4-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: group-4-app
+      app: group-4-frontend
   template:
     metadata:
       labels:
-        app: group-4-app
+        app: group-4-frontend
     spec:
       containers:
       - name: react-app
-        image: quay.io/cayops/group-4-frontend:latest
+        image: quay.io/cayops/group-4-frontend:628ccd79eea1aa252bb512bbffd2854011704a8f
         ports:
         - containerPort: 3000
