@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
+import mainLogo from './dog_32.png';
 
 class Header extends React.Component {
     render() {
@@ -21,12 +22,14 @@ class Header extends React.Component {
                     <Navbar.Brand href="#home">
                         <img
                         alt=""
-                        src="logo.svg"
+                        // src="logo.svg"
+                        src = {mainLogo}
                         width="30"
                         height="30"
-                        className="d-inline-block align-top"
+                        className="d-inline-block align-top mr-2"
                         />
-                        DogFact
+                        <span className="m-2">DogFact</span>
+                        
                     </Navbar.Brand>
                     </Container>
                 </Navbar>
