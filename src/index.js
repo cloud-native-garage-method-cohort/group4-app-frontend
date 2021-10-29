@@ -14,7 +14,7 @@ ReactDOM.render(
     {/* <App /> */}
     <Header />
     <DogCard />
-    <NewFact />
+    {/* <NewFact /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

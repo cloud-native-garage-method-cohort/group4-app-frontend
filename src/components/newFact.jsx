@@ -24,7 +24,8 @@ class NewFact extends React.Component {
             const result = fetch("https://dog-facts-backend-group-4-dev.itzroks-100000kr1k-fz0n6p-6ccd7f378ae819553d37d5f2ee142bd6-0000.ams03.containers.appdomain.cloud/add_fact/",
                 {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    // headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded  ' },
                     body: JSON.stringify({ fact: this.state.inputFact}),
                     // body: {fact: this.state.inputFact},
                     // body: `&fact=${this.state.inputFact}`,
