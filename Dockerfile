@@ -1,17 +1,16 @@
-FROM quay.io/upslopeio/node-alpine
+FROM node:alpine
 
-COPY --chown=node:node . .
-USER node
+RUN mkdir -p /home/node/app &&\
+ chown -R node:node /home/node/app
+WORKDIR /home/node/app
 
-WORKDIR /usr/src/app
+RUN chgrp -R 0 /home/node/app &&\
+ chmod -R g+rwX /home/node/app
 
-COPY . ./
+COPY package*.json /home/node/app/
+USER 1000
+RUN npm install
 
-# building the app
-RUN npm i
-RUN npm run build
-
-
-
-# Running the app
-CMD [ "npm", "start" ]
+COPY --chown=node:node . /home/node/app
+EXPOSE 3000
+CMD ["npm", "start"]
