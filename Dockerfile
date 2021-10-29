@@ -1,4 +1,4 @@
-FROM node:12
+FROM pull quay.io/centos7/nodejs-12-centos7
 
 RUN mkdir -p /home/node/app &&\
  chown -R node:node /home/node/app
