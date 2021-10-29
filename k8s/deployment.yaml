@@ -18,6 +18,6 @@ spec:
           runAsGroup: 1000
       containers:
       - name: react-app
-        image: quay.io/cayops/group-4-frontend:2f5b6ae2f5f9e0f3a1408b1c4c809fd53d3e8a71
+        image: quay.io/cayops/group-4-frontend:a3f5616551484024e53b6972ccf221e36da35198
         ports:
         - containerPort: 3000
